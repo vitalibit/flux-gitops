@@ -32,9 +32,13 @@ jobs:
       - name: 'Show TELE_TOKEN'
         run: echo ${{ env.TELE_TOKEN }}
       
-      - name: "Connect to kubectl"
-        uses: actions-hub/kubectl@master
-        env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      - name: 'get-credentials for kubernetes cluster'
+        uses: 'google-github-actions/get-gke-credentials@v1'
         with:
-          args: get pods -n demo
+          cluster_name: 'main'
+          project_id: 'k8s-k3s-386218'
+          location: 'us-central1-c'
+
+      # The KUBECONFIG env var is automatically exported and picked up by kubectl.
+      - name: 'get-pods'
+        run: 'kubectl get pods -n demo'
