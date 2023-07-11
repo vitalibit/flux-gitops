@@ -31,3 +31,10 @@ jobs:
           echo "TELE_TOKEN=${{ steps.secrets.outputs.tele_token }}" >> $GITHUB_ENV
       - name: 'Show TELE_TOKEN'
         run: echo ${{ env.TELE_TOKEN }}
+      
+      - name: "Connect to kubectl"
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: get pods -n demo
