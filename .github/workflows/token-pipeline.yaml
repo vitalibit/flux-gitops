@@ -37,4 +37,4 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          args: --context=gke_k8s-k3s-386218_us-central1-c_main get pods -n demo
+          args: get pods -n demo
