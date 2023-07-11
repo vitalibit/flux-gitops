@@ -21,6 +21,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: 'Obtain TELE_TOKEN'
+        id: secrets
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
