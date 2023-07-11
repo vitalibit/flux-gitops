@@ -18,7 +18,7 @@ jobs:
       - name: 'Authentification to GCP SecretManager'
         uses: 'google-github-actions/auth@v1'
         with:
-          service_account: 'k8s-k3s-386218@appspot.gserviceaccount.com'
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: 'Obtain TELE_TOKEN'
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
