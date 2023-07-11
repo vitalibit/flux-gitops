@@ -29,5 +29,5 @@ jobs:
       - name: 'Save TELE_TOKEN'
         run: |
           echo "TELE_TOKEN=${{ steps.secrets.outputs.tele_token }}" >> $GITHUB_ENV
-      - name: 'show TELE_TOKEN'
+      - name: 'Show TELE_TOKEN'
         run: echo ${{ env.TELE_TOKEN }}
