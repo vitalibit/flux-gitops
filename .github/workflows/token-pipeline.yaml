@@ -5,25 +5,28 @@ on:
   repository_dispatch:
     types:
       - token_changed
+
 jobs:
-  process_token_change:
+  token_change:
+    name: TOKEN_CHANGE
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-    - name: 'Authentification to GCP SecretManager'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        service_account: 'k8s-k3s-386218@appspot.gserviceaccount.com'
 
-    - name: 'Obtain TELE_TOKEN'
-      uses: 'google-github-actions/get-secretmanager-secrets@v1'
-      with:
-        secrets: |-
-          tele_token:k8s-k3s-386218/TELE_TOKEN
-    - name: 'Save TELE_TOKEN'
-      run: |
-        echo "TELE_TOKEN=${{ steps.secrets.outputs.tele_token }}" >> $GITHUB_ENV
+      - name: 'Authentification to GCP SecretManager'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          service_account: 'k8s-k3s-386218@appspot.gserviceaccount.com'
+
+      - name: 'Obtain TELE_TOKEN'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            tele_token:k8s-k3s-386218/TELE_TOKEN
+      - name: 'Save TELE_TOKEN'
+        run: |
+          echo "TELE_TOKEN=${{ steps.secrets.outputs.tele_token }}" >> $GITHUB_ENV
+      - name: 'show TELE_TOKEN'
+        run: echo $TELE_TOKEN
