@@ -42,7 +42,15 @@ jobs:
       # The KUBECONFIG env var is automatically exported and picked up by kubectl.
       - name: 'get-pods'
         run: 'kubectl get pods -n demo'
+      
       - name: Create not encrypted secret.yaml
         run: kubectl -n demo create secret generic kbot --from-literal=token=$TELE_TOKEN --dry-run=client -o yaml > secret.yaml
       - name: Show secret.yaml
         run: cat secret.yaml
+
+      - name: Sops Binary Installer
+        uses: mdgreenwald/mozilla-sops-action@v1.4.1
+        with:
+          version: latest
+      - name: Encrypt secret.yaml    
+        run: sops-path -e -gcp-kms projects/k8s-k3s-386218/locations/global/keyRings/sops-flux-v2/cryptoKeys/sops-key-flux-v2 --encrypted-regex '^(token)$' secret.yaml>./clusters/demo/secret-encrypted.yaml
