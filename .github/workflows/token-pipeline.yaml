@@ -44,7 +44,7 @@ jobs:
         run: 'kubectl get pods -n demo'
       
       - name: Create not encrypted secret.yaml
-        run: kubectl -n demo create secret generic kbot --from-literal=token=$TELE_TOKEN --dry-run=client -o yaml > secret.yaml
+        run: kubectl -n demo create secret generic kbot --from-file=token=TELE_TOKEN.txt --dry-run=client -o yaml > secret.yaml
       - name: Show secret.yaml
         run: cat secret.yaml
 
