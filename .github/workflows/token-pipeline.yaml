@@ -25,12 +25,12 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
-            tele_token:352350778257/TELE_TOKEN
+            tele_token:352350778257/TELE_TOKEN/v1
       - name: 'Save TELE_TOKEN'
         run: |
           echo "${{ steps.secrets.outputs.tele_token }}" > TELE_TOKEN.txt
       - name: 'Show TELE_TOKEN'
-        run: echo ${{ env.TELE_TOKEN }}
+        run: cat TELE_TOKEN.txt
       
       - name: 'get-credentials for kubernetes cluster'
         uses: 'google-github-actions/get-gke-credentials@v1'
