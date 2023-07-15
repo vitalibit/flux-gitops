@@ -25,7 +25,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
-            tele_token:projects/352350778257/secrets/TELE_TOKEN/versions/1
+            tele_token:projects/352350778257/secrets/TELE_TOKEN/versions/latest
       - name: 'Save TELE_TOKEN'
         run: |
           echo "${{ steps.secrets.outputs.tele_token }}" > TELE_TOKEN.txt
