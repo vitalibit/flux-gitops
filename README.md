@@ -4,31 +4,31 @@ Flux provides reconsilation of our deployment. Inside its repository, there is a
 
 ## Link to kbot application
 
-![](https://github.com/vitalibit/kbot)
+https://github.com/vitalibit/kbot
 
 1. GCP Secret Manager
 
-![]("./src_for_demonstration/secrets folder.png")
+![](./src_for_demonstration/secrets_folder.png)
 
 2. Show that kbot is working well with valid token
 
-![](./src_for_demonstration/events before start flux pipeline.png)
-![](./src_for_demonstration/logs with version 1 token.png)
+![](./src_for_demonstration/events_before_start_flux_pipeline.png)
+![](./src_for_demonstration/logs_with_version_1_token.png)
 
 3. Start pipeline with invalid version 2 TELE_TOKEN
 
-![](./src_for_demonstration/start pipeline with version 2 secret.png)
+![](./src_for_demonstration/start_pipeline_with_version_2_secret.png)
 
 4. Liveness probe fails due to change of value of TELE_TOKEN. It restarts our pod
 
-![](./src_for_demonstration/fail of liveness probe.png)
+![](./src_for_demonstration/fail_of_liveness_probe.png)
 
 5. Logs of restarted pod with invalid secret
 
-![](./src_for_demonstration/logs with version 2 token.png)
+![](./src_for_demonstration/logs_with_version_2_token.png)
 
 6. Restart pipeline with valid TELE_TOKEN version to provide correct work of kbot application
 
-![](./src_for_demonstration/pipeline with github actions secret v1.png)
+![](./src_for_demonstration/pipeline_with_github_actions_secret_v1.png)
 
-![](./src_for_demonstration/after rerun pipeline with version 1 we obtain working pod.png)
+![](./src_for_demonstration/after_rerun_pipeline_with_version_1_we_obtain_working_pod.png)
