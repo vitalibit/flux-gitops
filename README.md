@@ -8,7 +8,7 @@ Flux provides reconsilation of our deployment. Inside its repository, there is a
 
 1. GCP Secret Manager
 
-![](./src_for_demonstration/secrets_folder.png)
+![](./src_for_demonstration/"secrets folder.png")
 
 2. Show that kbot is working well with valid token
 
