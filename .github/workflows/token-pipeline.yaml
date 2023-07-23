@@ -1,6 +1,7 @@
 name: KBOT_TELE_TOKEN
 
 on:
+  push: main
   workflow_dispatch:
   repository_dispatch:
     types:
